@@ -7,6 +7,7 @@ export default function QuickLogButtonsExample() {
         onLogMood={() => console.log("Log mood clicked")}
         onLogSymptoms={() => console.log("Log symptoms clicked")}
         onLogFlow={() => console.log("Log flow clicked")}
+        onLogPeriod={() => console.log("Log period clicked")}
         onAddNote={() => console.log("Add note clicked")}
       />
     </div>

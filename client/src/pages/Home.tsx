@@ -272,26 +272,100 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto p-6 space-y-6">
-        <div>
-          <h1 className="text-4xl font-bold mb-2">Welcome back</h1>
-          <p className="text-muted-foreground">Here's your cycle overview for today</p>
+    <div className="min-h-screen bg-gradient-to-br from-rose-50/70 via-background to-pink-50/40 dark:from-background dark:via-background dark:to-rose-950/10">
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-8">
+
+        {/* Dashboard header */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-medium text-primary mb-2">
+              Your personal wellness space
+            </p>
+            <h1 className="herhealth-editorial text-3xl sm:text-4xl">
+              Welcome back
+            </h1>
+            <p className="text-muted-foreground mt-2">
+              Here's a gentle overview of your cycle today.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border bg-white/70 backdrop-blur px-4 py-3 shadow-sm">
+            <p className="text-xs text-muted-foreground">Today</p>
+            <p className="font-semibold">{format(new Date(), "EEEE, MMM d")}</p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <CyclePhaseCard phase={phase} cycleDay={cycleDay} />
-          <NextPeriodCountdown daysUntil={daysUntil} nextPeriodDate={nextPeriodDate} />
-        </div>
+        {/* Cycle overview */}
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-lg font-semibold">Cycle overview</h2>
+            <p className="text-sm text-muted-foreground">
+              Understand where you are in your cycle at a glance.
+            </p>
+          </div>
 
-        <QuickLogButtons
-          onLogPeriod={() => setDialogOpen("period")}
-          onLogMood={() => setDialogOpen("mood")}
-          onLogSymptoms={() => setDialogOpen("symptoms")}
-          onLogFlow={() => setDialogOpen("flow")}
-          onAddNote={() => setDialogOpen("note")}
-        />
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="rounded-3xl bg-gradient-to-br from-primary/15 via-primary/5 to-background p-[1px] shadow-sm">
+              <div className="h-full rounded-[23px] bg-card">
+                <CyclePhaseCard phase={phase} cycleDay={cycleDay} />
+              </div>
+            </div>
 
+            <div className="rounded-3xl bg-gradient-to-br from-rose-200/60 via-pink-100/40 to-background dark:from-rose-950/40 dark:via-background p-[1px] shadow-sm">
+              <div className="h-full rounded-[23px] bg-card">
+                <NextPeriodCountdown
+                  daysUntil={daysUntil}
+                  nextPeriodDate={nextPeriodDate}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick logging */}
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-lg font-semibold">How are you feeling?</h2>
+            <p className="text-sm text-muted-foreground">
+              Keep your health journal updated in a few taps.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border bg-white/80 backdrop-blur shadow-sm overflow-hidden">
+            <QuickLogButtons
+              onLogPeriod={() => setDialogOpen("period")}
+              onLogMood={() => setDialogOpen("mood")}
+              onLogSymptoms={() => setDialogOpen("symptoms")}
+              onLogFlow={() => setDialogOpen("flow")}
+              onAddNote={() => setDialogOpen("note")}
+            />
+          </div>
+        </section>
+
+        {/* Wellness insight */}
+        <section className="rounded-3xl border bg-gradient-to-r from-primary/10 via-background to-rose-50/60 dark:from-primary/10 dark:via-background dark:to-rose-950/10 p-6 sm:p-8 shadow-sm">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-sm font-medium text-primary mb-2">
+                A little reminder
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Your body is giving you information every day.
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2 leading-6">
+                Logging your mood, symptoms, flow, and notes can help you notice
+                patterns across your cycle and understand your wellbeing better.
+              </p>
+            </div>
+
+            <div className="shrink-0 rounded-2xl bg-primary/10 px-5 py-4 text-center">
+              <div className="text-2xl font-bold text-primary">{cycleDay}</div>
+              <div className="text-xs text-muted-foreground mt-1">Cycle day</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Period dialog */}
         <Dialog open={dialogOpen === "period"} onOpenChange={(open) => !open && setDialogOpen(null)}>
           <DialogContent>
             <DialogHeader>
@@ -310,9 +384,9 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <Button 
-                onClick={handleLogPeriod} 
-                disabled={saving || !periodStartDate} 
+              <Button
+                onClick={handleLogPeriod}
+                disabled={saving || !periodStartDate}
                 className="w-full"
                 data-testid="button-save-period"
               >
@@ -322,6 +396,7 @@ export default function Home() {
           </DialogContent>
         </Dialog>
 
+        {/* Mood dialog */}
         <Dialog open={dialogOpen === "mood"} onOpenChange={(open) => !open && setDialogOpen(null)}>
           <DialogContent>
             <DialogHeader>
@@ -334,30 +409,43 @@ export default function Home() {
           </DialogContent>
         </Dialog>
 
+        {/* Symptoms dialog */}
         <Dialog open={dialogOpen === "symptoms"} onOpenChange={(open) => !open && setDialogOpen(null)}>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
               <DialogTitle>Log Symptoms</DialogTitle>
             </DialogHeader>
-            <SymptomLogger selectedSymptoms={selectedSymptoms} onSymptomsChange={setSelectedSymptoms} />
-            <Button onClick={handleSaveLog} disabled={saving || selectedSymptoms.length === 0} data-testid="button-save-symptoms">
+            <SymptomLogger
+              selectedSymptoms={selectedSymptoms}
+              onSymptomsChange={setSelectedSymptoms}
+            />
+            <Button
+              onClick={handleSaveLog}
+              disabled={saving || selectedSymptoms.length === 0}
+              data-testid="button-save-symptoms"
+            >
               {saving ? "Saving..." : "Save"}
             </Button>
           </DialogContent>
         </Dialog>
 
+        {/* Flow dialog */}
         <Dialog open={dialogOpen === "flow"} onOpenChange={(open) => !open && setDialogOpen(null)}>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Log Flow Intensity</DialogTitle>
             </DialogHeader>
-            <FlowIntensitySlider intensity={flowIntensity} onIntensityChange={setFlowIntensity} />
+            <FlowIntensitySlider
+              intensity={flowIntensity}
+              onIntensityChange={setFlowIntensity}
+            />
             <Button onClick={handleSaveLog} disabled={saving} data-testid="button-save-flow">
               {saving ? "Saving..." : "Save"}
             </Button>
           </DialogContent>
         </Dialog>
 
+        {/* Note dialog */}
         <Dialog open={dialogOpen === "note"} onOpenChange={(open) => !open && setDialogOpen(null)}>
           <DialogContent>
             <DialogHeader>
@@ -375,7 +463,9 @@ export default function Home() {
             </Button>
           </DialogContent>
         </Dialog>
+
       </div>
     </div>
+
   );
 }

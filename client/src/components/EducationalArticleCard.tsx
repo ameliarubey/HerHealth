@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Clock, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Clock, ExternalLink } from "lucide-react";
 
 interface EducationalArticleCardProps {
   title: string;
@@ -8,6 +7,7 @@ interface EducationalArticleCardProps {
   image?: string;
   category: string;
   readTime: string;
+  source: string;
   onClick: () => void;
 }
 
@@ -17,38 +17,72 @@ export default function EducationalArticleCard({
   image,
   category,
   readTime,
+  source,
   onClick,
 }: EducationalArticleCardProps) {
   return (
-    <Card 
-      className="overflow-hidden cursor-pointer hover-elevate active-elevate-2 group" 
+    <Card
+      className="group overflow-hidden rounded-[1.75rem] border border-rose-100/80 bg-white/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-100/30 cursor-pointer"
       onClick={onClick}
       data-testid="card-article"
     >
       {image && (
-        <div className="aspect-video overflow-hidden">
+        <div className="relative aspect-[16/9] overflow-hidden">
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-transform group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-        </div>
-      )}
-      <div className="p-4">
-        <div className="flex items-center gap-2 mb-3">
-          <Badge variant="secondary" className="text-xs">
-            {category}
-          </Badge>
-          <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Clock className="h-3 w-3" />
-            <span>{readTime}</span>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
+          <div className="absolute left-4 top-4">
+            <span className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-medium text-rose-700 shadow-sm backdrop-blur">
+              {category}
+            </span>
           </div>
         </div>
-        <h4 className="font-semibold mb-2 line-clamp-2">{title}</h4>
-        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{excerpt}</p>
-        <div className="flex items-center gap-1 text-sm text-primary font-medium">
-          Read more
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      )}
+
+      <div className="p-5">
+        {!image && (
+          <div className="mb-4">
+            <span className="rounded-full bg-rose-50 px-3 py-1.5 text-xs font-medium text-rose-700">
+              {category}
+            </span>
+          </div>
+        )}
+
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-1.5 text-xs text-slate-400">
+            <Clock className="h-3.5 w-3.5" />
+            {readTime}
+          </div>
+
+          <ExternalLink className="h-4 w-4 text-slate-300 transition-colors group-hover:text-rose-400" />
+        </div>
+
+        <h3 className="mb-2 line-clamp-2 text-lg font-semibold tracking-tight text-slate-800">
+          {title}
+        </h3>
+
+        <p className="mb-4 line-clamp-3 text-sm leading-6 text-slate-500">
+          {excerpt}
+        </p>
+
+        <div className="flex items-center justify-between border-t border-slate-100 pt-4">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.14em] text-slate-400">
+              Trusted source
+            </p>
+            <p className="mt-0.5 text-sm font-medium text-slate-600">
+              {source}
+            </p>
+          </div>
+
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-50 text-rose-500 transition-all group-hover:bg-rose-100">
+            <ArrowUpRight className="h-4 w-4" />
+          </div>
         </div>
       </div>
     </Card>

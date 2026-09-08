@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Clock, Sparkles } from "lucide-react";
 
 interface WellnessCardProps {
   title: string;
@@ -20,36 +20,70 @@ export default function WellnessCard({
   onStart,
 }: WellnessCardProps) {
   return (
-    <Card className="overflow-hidden hover-elevate group">
+    <Card className="group overflow-hidden rounded-[1.75rem] border border-rose-100/70 bg-white/90 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-100/40">
       {image && (
-        <div className="aspect-video overflow-hidden">
+        <div className="relative aspect-[16/10] overflow-hidden">
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-transform group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
+          <div className="absolute left-4 top-4 flex items-center gap-2">
+            <span className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-medium text-rose-700 shadow-sm backdrop-blur">
+              {category}
+            </span>
+
+            {duration && (
+              <span className="flex items-center gap-1 rounded-full bg-white/90 px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm backdrop-blur">
+                <Clock className="h-3 w-3" />
+                {duration}
+              </span>
+            )}
+          </div>
         </div>
       )}
-      <div className="p-4">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-xs font-medium text-primary">{category}</span>
-          {duration && (
-            <>
-              <span className="text-xs text-muted-foreground">•</span>
-              <span className="text-xs text-muted-foreground">{duration}</span>
-            </>
-          )}
+
+      <div className="p-5">
+        {!image && (
+          <div className="mb-4 flex items-center gap-2">
+            <span className="rounded-full bg-rose-50 px-3 py-1.5 text-xs font-medium text-rose-700">
+              {category}
+            </span>
+
+            {duration && (
+              <span className="flex items-center gap-1 rounded-full bg-slate-50 px-3 py-1.5 text-xs text-slate-500">
+                <Clock className="h-3 w-3" />
+                {duration}
+              </span>
+            )}
+          </div>
+        )}
+
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <h3 className="text-lg font-semibold tracking-tight text-slate-800">
+            {title}
+          </h3>
+
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500 transition-colors group-hover:bg-rose-100">
+            <Sparkles className="h-4 w-4" />
+          </div>
         </div>
-        <h4 className="font-semibold mb-2">{title}</h4>
-        <p className="text-sm text-muted-foreground mb-4">{description}</p>
+
+        <p className="mb-5 text-sm leading-6 text-slate-500">
+          {description}
+        </p>
+
         <Button
-          variant="outline"
-          className="w-full gap-2 hover-elevate active-elevate-2"
           onClick={onStart}
-          data-testid={`button-start-wellness`}
+          variant="ghost"
+          className="group/button h-10 w-full justify-between rounded-xl bg-rose-50 px-4 font-medium text-rose-700 transition-all hover:bg-rose-100 hover:text-rose-800"
+          data-testid="button-start-wellness"
         >
-          <Play className="h-4 w-4" />
-          Start
+          <span>Explore activity</span>
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5" />
         </Button>
       </div>
     </Card>

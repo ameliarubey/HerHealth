@@ -9,6 +9,7 @@ export default function EducationalArticleCardExample() {
         excerpt="Discover nutrient-rich foods that can help reduce menstrual pain and support your body during your period."
         image={nutritionImage}
         category="Nutrition"
+        source="NHS"
         readTime="5 min read"
         onClick={() => console.log("Article clicked")}
       />
@@ -16,6 +17,7 @@ export default function EducationalArticleCardExample() {
         title="Understanding Your Menstrual Cycle Phases"
         excerpt="Learn about the four phases of your cycle and how hormones affect your mood, energy, and overall wellbeing."
         category="Health"
+        source="Office on Women's Health"
         readTime="7 min read"
         onClick={() => console.log("Article clicked")}
       />
