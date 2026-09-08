@@ -3,9 +3,9 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai =process.env.OPENAI_API_KEY?new OpenAI({ apiKey: process.env.OPENAI_API_KEY}) : null;
+
+
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Chatbot endpoint
@@ -46,6 +46,12 @@ Remember: You're a helpful assistant, not a replacement for medical professional
         })),
         { role: "user", content: message },
       ];
+	
+	if (!openai) {
+ 	 return res.status(503).json({
+    	error: "Luna AI is not configured yet.",
+  	});
+	}
 
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",

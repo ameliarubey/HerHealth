@@ -11,7 +11,8 @@ export default function ChatbotToggle() {
       {!isOpen && (
         <Button
           size="icon"
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-40"
+          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-[100] flex items-center justify-center
+"
           onClick={() => setIsOpen(true)}
           data-testid="button-open-chatbot"
         >
