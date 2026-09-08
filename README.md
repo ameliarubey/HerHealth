@@ -67,23 +67,6 @@ OpenAI API — optional AI wellness assistant
 jsPDF — health report generation
 React Router
 Lucide React
-🏗️ Application Architecture
-                 ┌─────────────────────┐
-                 │      HerHealth      │
-                 └──────────┬──────────┘
-                            │
-                ┌───────────▼───────────┐
-                │    React Frontend     │
-                │  TypeScript + Vite    │
-                └───────────┬───────────┘
-                            │
-             ┌──────────────┼──────────────┐
-             │              │              │
-      ┌──────▼──────┐ ┌────▼─────┐ ┌─────▼─────┐
-      │   Firebase  │ │  Express  │ │  External │
-      │ Auth/Cloud  │ │  Backend  │ │ Resources │
-      │  Firestore  │ │           │ │           │
-      └─────────────┘ └───────────┘ └───────────┘
 📁 Project Structure
 HerHealth/
 │
