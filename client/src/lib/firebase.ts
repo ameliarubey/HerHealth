@@ -5,11 +5,13 @@ import { getFirestore, collection, doc, setDoc, getDoc, updateDoc, query, where,
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebasestorage.app`,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCIyvQUmkbyqK9L8B6uPdQAOjTYnF6Fqrc",
+  authDomain: "herhealth-17e26.firebaseapp.com",
+  projectId: "herhealth-17e26",
+  storageBucket: "herhealth-17e26.firebasestorage.app",
+  messagingSenderId: "95922159983",
+  appId: "1:95922159983:web:9ec4764e3d0aa0b66ee89a",
+  measurementId: "G-81NG3X534J"
 };
 
 const app = initializeApp(firebaseConfig);
