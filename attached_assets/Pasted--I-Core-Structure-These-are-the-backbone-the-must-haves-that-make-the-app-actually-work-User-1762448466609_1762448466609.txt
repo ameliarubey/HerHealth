@@ -1,0 +1,191 @@
+🌸 I. Core Structure
+
+These are the backbone — the must-haves that make the app actually work.
+
+User Authentication
+
+Sign up (email, phone, Google, Apple)
+
+Login / Logout
+
+Forgot Password / Reset Password
+
+Two-factor authentication (optional for privacy)
+
+Social login (Google, Facebook, etc.)
+
+Anonymous guest mode (with limited features)
+
+Profile Management
+
+Name, age, gender (default female)
+
+Date of birth
+
+Height, weight (for health insights)
+
+Cycle length input (avg. period duration, avg. cycle length)
+
+Privacy & data sharing settings
+
+Language & region preferences
+
+Theme choice (light, dark, soft pastel, etc.)
+
+Cycle Tracking Engine
+
+Start/end period input
+
+Auto prediction for next period
+
+Ovulation prediction
+
+Fertility window
+
+PMS period highlighting
+
+Irregular cycle handling (AI-based average calculation)
+
+Historical cycle data storage
+
+Customizable cycle length settings
+
+💖 II. User Features (The fun & useful stuff)
+
+What the user interacts with daily — this is where the app shines.
+
+Home Dashboard
+
+Current day in cycle (“Day 14 — ovulation phase 🌼”)
+
+Next period countdown
+
+Phase indicator (menstrual, follicular, ovulatory, luteal)
+
+Quick log buttons: mood, symptoms, flow, notes
+
+Daily Log / Journal
+
+Mood selection (emoji or tags)
+
+Symptoms (cramps, bloating, acne, cravings, etc.)
+
+Flow intensity (light, medium, heavy)
+
+Custom symptom creator
+
+Notes (text + voice)
+
+Photos (optional)
+
+Tags (“PMS”, “work stress”, “date night”)
+
+Calendar View
+
+Monthly overview
+
+Highlighted period, ovulation, and fertile days
+
+Tap to add/edit data
+
+Color-coded cycle stages
+
+Sync with device calendar
+
+Cycle Analytics
+
+Average cycle length, period duration
+
+Graphs of symptoms over time
+
+Mood vs. hormone patterns
+
+Predictive trends (“Your last 3 cycles were shorter by 1 day”)
+
+Export as PDF or CSV (for doctor visits)
+
+Reminders / Notifications
+
+Period approaching alerts
+
+Ovulation window reminders
+
+PMS reminder (“Maybe avoid big arguments today 😅”)
+
+Medication reminder (iron, vitamins, etc.)
+
+Custom reminders (e.g., “take birth control pill”)
+
+Educational Content
+
+Articles on menstrual health, nutrition, exercise
+
+Video guides & expert Q&A
+
+FAQs on common concerns
+
+“Cycle Wisdom” tips based on phase
+
+Wellness Zone
+
+Meditation audios
+
+Gentle workout suggestions
+
+Food & drink recommendations per phase
+
+Self-care checklist
+
+Sleep & mood tracking sync (optional)
+
+Partner Mode
+
+Partner login (view cycle timeline)
+
+Optional shared notifications (“Her period starts tomorrow 💌”)
+
+Private notes toggle (so they don’t see everything 😏)
+
+Customization
+
+Themes (rose gold, moonlight, calm teal, etc.)
+
+Font size & style
+
+Widgets (mini calendar, countdown)
+
+Notification sound customization
+
+🧠 III. Smart Features
+
+Make it intelligent, intuitive, and emotionally aware.
+
+AI-powered predictions
+
+Learns from past data to predict next cycles accurately
+
+Adapts to irregular patterns
+
+Suggests lifestyle tweaks (“You often get cramps — try adding magnesium”)
+
+Emotional intelligence
+
+Detects mood trends and offers affirmations
+
+“You’ve logged low moods 3 days in a row — maybe some rest or journaling?”
+
+Chatbot / Virtual Assistant
+
+“Ask Luna” style helper
+
+Answers questions about cycles, PMS, cramps, etc.
+
+Offers quick tips and motivational quotes
+
+Health Sync
+
+Connect with Google Fit, Apple Health
+
+Pull data like sleep, steps, heart rate
+
+Combine physical & emotional analytics
